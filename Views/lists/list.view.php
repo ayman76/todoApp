@@ -5,6 +5,12 @@
 <div class="min-h-full">
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <a href="/todos/create">
+                <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                    Add List
+                </button>
+            </a>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">
                 <table class="w-full text-sm text-left text-gray-500 ">
                     <thead class="text-xs text-gray-700 uppercase  bg-gray-50 light:bg-gray-700">
@@ -28,7 +34,7 @@
                         <tr class="bg-white border-b pb-6">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                <?= $todo['title'] ?>
+                                <p><?= $todo['title'] ?></p>
                             </th>
 
                             <th scope="row"
@@ -46,12 +52,19 @@
                             </th>
 
                             <td class="px-6 py-4">
-                                <a href="#"
+                                <a href="/todo/edit?id=<?= $todo['id'] ?>"
                                    class="font-medium text-blue-600 hover:underline mr-3">Edit</a>
-                                <a href="#"
-                                   class="font-medium text-red-600 hover:underline">Delete</a>
+                                <button onclick="document.querySelector('#delete-form<?= $todo['id'] ?>').submit()"
+                                        class="font-medium text-red-600 hover:underline">Delete
+                                </button>
                             </td>
                         </tr>
+
+                        <form action="/todo" method="post" class="hidden" id="delete-form<?= $todo['id'] ?>">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="id" value="<?= $todo['id'] ?>">
+                        </form>
+
                     <?php endforeach; ?>
 
                     </tbody>

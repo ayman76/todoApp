@@ -35,13 +35,13 @@
                             <td class="px-6 py-4">
                                 <a href="/list/edit?id=<?= $list['id'] ?>"
                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3">Edit</a>
-                                <button onclick="document.querySelector('#delete-form').submit()"
+                                <button onclick="document.querySelector('#delete-form<?= $list['id'] ?>').submit()"
                                         class="font-medium text-red-600 hover:underline">Delete
                                 </button>
                             </td>
                         </tr>
 
-                        <form action="/list" method="post" class="hidden" id="delete-form">
+                        <form action="/list" method="post" class="hidden" id="delete-form<?= $list['id'] ?>">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="id" value="<?= $list['id'] ?>">
                         </form>

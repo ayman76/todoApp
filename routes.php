@@ -13,3 +13,11 @@ $router->patch('/list', 'list/update.php');
 $router->delete('/list', 'list/destroy.php');
 
 
+$router->get('/todo', 'todo/show.php');
+$router->get('/todos/create', 'todo/create.php');
+$router->post('/todos', 'todo/store.php');
+$router->get('/todo/edit', 'todo/edit.php');
+$router->patch('/todo', 'todo/update.php');
+$router->delete('/todo', 'todo/destroy.php');
+
+

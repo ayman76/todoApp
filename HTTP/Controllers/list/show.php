@@ -12,6 +12,8 @@ $todos = $db->query('select * from todos where list_id = :id', [
 
 //dd($todos);
 
+$_SESSION['list'] = $id;
+
 view('lists/list.view.php', [
     'heading' => "List",
     "todos" => $todos,
